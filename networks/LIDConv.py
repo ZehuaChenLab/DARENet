@@ -5,9 +5,9 @@ import torch.nn.functional as F
 from einops import rearrange
 
 
-class LIDConv(nn.Module):
+class LID2Conv(nn.Module):
     def __init__(self, dim, num_param, stride=1):
-        super(LIDConv, self).__init__()
+        super(LID2Conv, self).__init__()
         self.num_param = num_param
         self.stride = stride
         self.conv = nn.Sequential(nn.Conv2d(dim, dim, kernel_size=(num_param, 1), stride=(num_param, 1)),
@@ -205,7 +205,7 @@ if __name__ == '__main__':
     from torchinfo import summary
     from ptflops import get_model_complexity_info
 
-    net = LIDConv(64, 3, 1)
+    net = LID2Conv(64, 3, 1)
     summary(net, input_size=(4, 64, 256, 256))
     macs, params = get_model_complexity_info(net, (64, 256, 256), print_per_layer_stat=False)
     print(macs, params)
