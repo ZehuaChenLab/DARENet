@@ -15,8 +15,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torchvision import models
 import timm
-from MyNet.LDConv import LID2Conv
-from MyNet.TKAtten import Attention
+from .LIDConv import LID2Conv
+from .TKAtten import Attention
 nonlinearity = partial(F.relu, inplace=True)
 
 class ECA(nn.Module):
